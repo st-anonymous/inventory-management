@@ -29,7 +29,7 @@ class createUser(APIView):
       'phone': phone
     })
     if serializer.is_valid():
-      serializer.save()
+      Users.objects.create(id=user_id, name=name, email=email, phone=phone)
       return Response({"message": f"New User Created for user_id {user_id}."}, status = status.HTTP_201_CREATED)
     return Response({"message": serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
 
